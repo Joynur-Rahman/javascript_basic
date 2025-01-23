@@ -1,0 +1,1052 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>javascript</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="16cbbc04-6741-80fa-b80e-dcc4bbec24b9" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1667372393086-9d4001d51cf1?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🕝</span></div><h1 class="page-title">javascript</h1><p class="page-description"></p></header><div class="page-body"><h1 id="16cbbc04-6741-80e6-a970-f643697ea0f8" class=""><mark class="highlight-red">Basic</mark></h1><hr id="16cbbc04-6741-808f-963a-cacb2e464ecf"/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16cbbc04-6741-8042-a4fc-f4dd51c922a0" class="code"><code class="language-JavaScript">console.log(&quot;hello&quot;);</code></pre><p id="16cbbc04-6741-80fe-8946-de9423cc0973" class="">above thing is a normal message</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16cbbc04-6741-80f7-93c9-eeebfaae4ac0" class="code"><code class="language-JavaScript">console.warn(&quot;hello&quot;);</code></pre><p id="16cbbc04-6741-8083-bd8b-f41c586a98ed" class="">above thing is a warning message. show in yellow colour</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16cbbc04-6741-808a-9c65-f9b22dba6426" class="code"><code class="language-JavaScript">console.error(&quot;hello&quot;);</code></pre><p id="16cbbc04-6741-80f6-8939-f1d75877cac1" class="">above thing is shown as an error in red colour</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16cbbc04-6741-8076-83fe-e2049a97d7db" class="code"><code class="language-JavaScript">alert(&quot;hello&quot;);</code></pre><p id="16cbbc04-6741-8003-8fcd-f267b523964e" class="">above thing shows alert message whenever the page is reloaded</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16cbbc04-6741-807d-86e9-c4800cd8e2db" class="code"><code class="language-JavaScript">prompt(&quot;hello&quot;);</code></pre><p id="16cbbc04-6741-8045-b5e3-ddd75051ca5f" class="">above thing ask in alert</p><hr id="16dbbc04-6741-80d9-ae4b-cc62f0fdc086"/><h2 id="16dbbc04-6741-80f4-93b9-fd3f70adbece" class=""><mark class="highlight-red">variables and constants</mark></h2><ul id="16dbbc04-6741-806b-b004-de36da8dcde2" class="bulleted-list"><li style="list-style-type:disc">data store krte hai</li></ul><ul id="16dbbc04-6741-8083-bb78-e58c1f48affd" class="bulleted-list"><li style="list-style-type:disc">variable pe baar baar data store kr sakte hai,purani value nayi se replace ho jaati hai</li></ul><ul id="16dbbc04-6741-8046-b7eb-fc78d48ddb41" class="bulleted-list"><li style="list-style-type:disc">constant pe ek baar hi data store kr sakte hai</li></ul><ul id="16dbbc04-6741-80ae-9a7d-e3413353c255" class="bulleted-list"><li style="list-style-type:disc">heap memory is taken by variable and constant</li></ul><h2 id="16dbbc04-6741-8096-b0ec-d01b9da8f5f4" class=""><mark class="highlight-red">compiler and interpreter</mark> </h2><ul id="16dbbc04-6741-80ac-8b45-f8c71792760f" class="bulleted-list"><li style="list-style-type:disc">compiler convert written code in machine level language</li></ul><ul id="16ebbc04-6741-8019-90f9-f987f6c1073d" class="bulleted-list"><li style="list-style-type:disc">interpreter byte code pe convert krta hai</li></ul><ul id="16ebbc04-6741-809e-8f04-d93fbcdee74a" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal">javascript interperter based hota hai</mark></li></ul><ul id="16ebbc04-6741-8027-b13b-dd3ccc81d4b9" class="bulleted-list"><li style="list-style-type:disc">just in time uses capability of both compiler and interpreter for optimal performence</li></ul><h2 id="16ebbc04-6741-8017-92c8-e445774856bf" class=""><mark class="highlight-red">window object</mark></h2><ul id="16ebbc04-6741-80ac-97f4-fed173631956" class="bulleted-list"><li style="list-style-type:disc">features frequently used in js but not the part of it</li></ul><ul id="16ebbc04-6741-80b3-b877-c0852626acc5" class="bulleted-list"><li style="list-style-type:disc">they are available in browser</li></ul><ul id="16ebbc04-6741-807f-bcac-ed4c43c4a52d" class="bulleted-list"><li style="list-style-type:disc">eg= console,alert,prompt</li></ul><h2 id="16ebbc04-6741-80b4-83c2-e5ef446159f4" class=""><mark class="highlight-red">data types and beyond</mark></h2><h3 id="16ebbc04-6741-80eb-882c-dacb6a424aa2" class=""><mark class="highlight-yellow">primitive data types</mark></h3><ul id="16ebbc04-6741-8059-9a0a-ee4d206c7509" class="bulleted-list"><li style="list-style-type:disc">integer </li></ul><ul id="16ebbc04-6741-8027-acc4-e5a71e935d83" class="bulleted-list"><li style="list-style-type:disc">string</li></ul><ul id="16ebbc04-6741-8004-ae1a-c55cf795a08c" class="bulleted-list"><li style="list-style-type:disc">null</li></ul><ul id="16ebbc04-6741-80c4-aab0-e22413941c92" class="bulleted-list"><li style="list-style-type:disc">undefined</li></ul><ul id="16ebbc04-6741-80b6-b7aa-e0dfa79b0e62" class="bulleted-list"><li style="list-style-type:disc">Boolean </li></ul><h3 id="16ebbc04-6741-80e9-b78a-f3dc07b9219d" class=""><mark class="highlight-yellow">Reference data type</mark></h3><ul id="16ebbc04-6741-8092-880a-cbf06cbb289a" class="bulleted-list"><li style="list-style-type:disc">()</li></ul><ul id="16ebbc04-6741-8037-9cfe-dc521201bf8f" class="bulleted-list"><li style="list-style-type:disc">[ ]</li></ul><ul id="16ebbc04-6741-80e1-9099-fbc0374ac628" class="bulleted-list"><li style="list-style-type:disc">{ }</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="184bbc04-6741-8068-8a3e-f54b24f5e3a5" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">var arr = [ 12,13,14,15]
+var b = arr</code></pre><p id="16ebbc04-6741-80f0-b686-d29a6d3beb7c" class="">above thing takes reference from arr </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16ebbc04-6741-806d-9965-cf890a902ea8" class="code"><code class="language-JavaScript">var arr = [12,13,14,15]
+var b = [...arr]</code></pre><p id="16ebbc04-6741-80b4-8e90-f7594840b6a6" class="">above thing copies everything from arr</p><h1 id="16ebbc04-6741-80e6-9a96-eb87a242e699" class=""><mark class="highlight-red">conditionals</mark></h1><hr id="16ebbc04-6741-8062-9ef8-e14034b657de"/><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16ebbc04-6741-8005-a517-d3530fc34783" class="code"><code class="language-JavaScript">var age = 18;
+if(age&gt;18)
+{
+	console.log(&quot;hey&quot;);
+}else
+{
+	console.log(&quot;hello&quot;);
+}</code></pre><h1 id="16ebbc04-6741-80bb-a804-d2a7d62c2c5a" class=""><mark class="highlight-red">loop</mark></h1><hr id="16ebbc04-6741-8078-8c8d-d11a8482fb00"/><ul id="16ebbc04-6741-801c-ae7c-d6a39131b1d7" class="bulleted-list"><li style="list-style-type:disc">for</li></ul><ul id="16ebbc04-6741-8087-a35b-fae616edd82e" class="bulleted-list"><li style="list-style-type:disc">while</li></ul><ul id="16ebbc04-6741-80c0-b54f-edb7e8040e4a" class="bulleted-list"><li style="list-style-type:disc">do-while</li></ul><ul id="16ebbc04-6741-80e5-9c5f-c212b1fc4b00" class="bulleted-list"><li style="list-style-type:disc">for each</li></ul><ul id="16ebbc04-6741-8072-afcd-c0748a92f14b" class="bulleted-list"><li style="list-style-type:disc">for in </li></ul><ul id="16ebbc04-6741-80c3-9efb-d5a1a7faa46a" class="bulleted-list"><li style="list-style-type:disc">for of</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16ebbc04-6741-80d8-8ff1-ee315581c8c6" class="code"><code class="language-JavaScript">for( var num=1;num&lt;11;num++)
+{
+//ye baar baar chalega
+}</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="16fbbc04-6741-8033-a0ee-e65c05b1acce" class="code"><code class="language-JavaScript">start;
+while(end){
+	change;
+}
+
+//example
+var i=1;
+while(i&lt;11){
+	i++;
+}</code></pre><h1 id="16fbbc04-6741-805c-93de-e08487b88d6f" class=""><mark class="highlight-red">Functions</mark></h1><hr id="16fbbc04-6741-80be-ba59-ebe612b23353"/><h2 id="16fbbc04-6741-8008-8946-f827bdb65771" class=""><mark class="highlight-yellow">es5</mark></h2><ul id="16fbbc04-6741-8093-b612-c10185a5a95f" class="bulleted-list"><li style="list-style-type:disc">function statements</li></ul><ul id="16fbbc04-6741-8025-956f-fbc601a28e61" class="bulleted-list"><li style="list-style-type:disc">function expressions</li></ul><ul id="16fbbc04-6741-8025-bc25-f145bf176c31" class="bulleted-list"><li style="list-style-type:disc">anonymous function</li></ul><h2 id="16fbbc04-6741-8080-86a0-e7a75bd42dc1" class=""><mark class="highlight-yellow">es6- fat arrow function</mark></h2><ul id="16fbbc04-6741-809f-a138-c4a0c7024128" class="bulleted-list"><li style="list-style-type:disc">basic fat arrow</li></ul><ul id="16fbbc04-6741-8026-b42f-f37e47cd5d5c" class="bulleted-list"><li style="list-style-type:disc">fat arrow with one parameter</li></ul><ul id="16fbbc04-6741-802b-9242-c29f1af8f813" class="bulleted-list"><li style="list-style-type:disc">fat arrow with implicit return</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8099-abe3-ce0cff391180" class="code"><code class="language-JavaScript">function abcd() {
+}
+abcd()</code></pre><p id="17bbbc04-6741-80bb-8453-fa8096cc4fa3" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-80c1-9952-c1e643a385bf" class="code"><code class="language-JavaScript">function abcd(val) {
+}
+abcd(anything)</code></pre><p id="17bbbc04-6741-80e4-b39e-ddc961db14d6" class=""><mark class="highlight-purple">val is the parameter </mark></p><p id="17bbbc04-6741-800c-b4d6-f2ca1dd4ac2a" class=""><mark class="highlight-purple">anything is the argument</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8020-aff7-f1f16b3cb20c" class="code"><code class="language-JavaScript">function abc(val) {
+	console.log(12+val);
+}
+abc(12);
+
+answer=24</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8028-9c65-d6b513ccb285" class="code"><code class="language-JavaScript">function abcd(){
+	//function statement
+}
+
+var abcd = function(){
+	//function expression
+}
+
+function(){
+	//ANONYMOUS fn
+}
+
+//fat arrow function
+var a = ()=&gt;{};
+var b = ()=&gt;{
+	//basic fat arrow
+}
+
+var g = (ab)=&gt;{
+	//fat arrow with one parameter. value of g goes to ab
+}
+g(12);
+
+var abcd = ()=&gt;&quot;harsh&quot;; //fat arrow with implicit return</code></pre><p id="17bbbc04-6741-80dd-a3ec-f5517c276ca3" class=""><mark class="highlight-purple"><mark class="highlight-default_background">#function that does not return anything basically return undefined</mark></mark></p><h1 id="17bbbc04-6741-80d6-b145-f52b8da524b3" class=""><mark class="highlight-red">ARRAY</mark></h1><hr id="17bbbc04-6741-8087-85cb-cda9c347cb71"/><p id="17bbbc04-6741-8030-a1db-efcb1f589ced" class="">ek se jyada value ek saath rakhni ho</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8050-a696-cdc45ea01c5f" class="code"><code class="language-JavaScript">var users = [&quot;jay&quot;, &quot;dev&quot;];
+console.log(users[0]); //print first user
+
+var arr = [1,2,&quot;3&quot;,function(){},[],4] //we can mix, not in java but in javascript
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-806c-aed0-ce32254b0945" class="code"><code class="language-JavaScript">//how to loop an array
+var arr = [1,2,3,4,5];
+arr.forEach(function(val){
+	console.log(val);
+})</code></pre><h1 id="17bbbc04-6741-8053-99e7-fafea0818b02" class=""><mark class="highlight-red">OBJECTS</mark></h1><hr id="17bbbc04-6741-8022-aaa2-e00583041994"/><p id="17bbbc04-6741-80cf-a262-f5bb8ba36749" class="">ye ek tareeka hai jisse hum ek identity ki details ek saath rakh sakte hai</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8056-80ea-ea03c0c57314" class="code"><code class="language-JavaScript">var obj1 = {};
+var obj2 = new Object();  //capital o
+
+var obj = {
+	name : &quot;jay&quot;,
+	age : 25,
+	email : &quot;abc@gmail.com&quot;,
+	phno : 1234567890
+};</code></pre><p id="17bbbc04-6741-80a1-a15f-ffdc270261b7" class=""><mark class="highlight-purple">#synchronous code line by line chalta hai</mark></p><p id="17bbbc04-6741-808e-80e2-e85716eeba59" class=""><mark class="highlight-purple">#async code saara  ek sath shuru hota hai</mark></p><h1 id="17bbbc04-6741-8096-b659-d3b39fdeda67" class=""><mark class="highlight-red">KEYWORD</mark></h1><hr id="17bbbc04-6741-8012-87d0-cd565454cac5"/><p id="17bbbc04-6741-80f6-9041-c4f8aebbae9c" class="">#word having meaning in the programming language</p><h3 id="17bbbc04-6741-8046-b769-c61685b26864" class=""><mark class="highlight-yellow">1.this </mark></h3><ul id="17bbbc04-6741-80ea-bee7-fe9638aabd47" class="bulleted-list"><li style="list-style-type:disc">Global = window</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-80d3-b111-fb6cb43d700e" class="code"><code class="language-JavaScript">console.log(this);</code></pre><ul id="17bbbc04-6741-80f4-a67e-c365c94f181d" class="bulleted-list"><li style="list-style-type:disc">Function=window</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8090-ab8f-d0c37b98dd3c" class="code"><code class="language-JavaScript">function abcd(){
+		console.log(this);
+}
+abcd();</code></pre><ul id="17bbbc04-6741-8008-b880-e030dd4cce29" class="bulleted-list"><li style="list-style-type:disc">Method=Object</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8025-b66b-f7ba46830ac8" class="code"><code class="language-JavaScript">var obj = {
+		name:function(){
+				console.log(this);
+		}
+}
+obj.name();</code></pre><ul id="17bbbc04-6741-80b3-8d79-d607cc659b50" class="bulleted-list"><li style="list-style-type:disc">Function inside method(es5)=window</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-8038-9cc3-d043ee55a7a8" class="code"><code class="language-JavaScript">var obj2 = {
+		sayName: function(){
+				function childfnc(){
+						console.log(this);
+				}
+				childfnc();
+		}
+}</code></pre><ul id="17bbbc04-6741-803b-a74c-e5cb3d800366" class="bulleted-list"><li style="list-style-type:disc">Function inside methode(es6)=object</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="17bbbc04-6741-80d5-98cf-e2ee8c61f771" class="code"><code class="language-JavaScript">var obj3 = {
+		sayName: function(){
+				const child = ()=&gt;{
+						console.log(this);
+				}
+				child();
+		}
+}
+obj3.sayName();</code></pre><ul id="17bbbc04-6741-80e0-922a-ee5eb8195d24" class="bulleted-list"><li style="list-style-type:disc">constructor function mein this ki value = new blank object <h3 id="182bbc04-6741-8054-8a82-fc4cbd038701" class=""><strong>Why Use Constructor Functions?</strong></h3><ul id="182bbc04-6741-806f-b0dc-c0ce7506ccd9" class="bulleted-list"><li style="list-style-type:circle">They’re a clean way to create multiple similar objects.</li></ul><ul id="182bbc04-6741-807b-927d-c8265e0c3625" class="bulleted-list"><li style="list-style-type:circle">You don’t have to repeat yourself (DRY principle).</li></ul><ul id="182bbc04-6741-802b-95ce-f2c0f11f9a28" class="bulleted-list"><li style="list-style-type:circle">You can easily attach properties and methods.</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8066-ad34-e2cbff9d562d" class="code"><code class="language-JavaScript">function add(){
+	console.log(this);
+}
+const ans = new add();
+
+//or
+class Add {
+  constructor() {
+    console.log(this); 
+  }
+}
+const ans = new Add();
+
+//or
+function Person(name, age) {
+    // `this` points to the new object
+    this.name = name;
+    this.age = age;
+
+    // You can add methods too
+    this.greet = function () {
+        console.log(`Hi, I’m ${this.name} and I’m ${this.age} years old!`);
+    };
+}
+
+// Use the `new` keyword to create objects
+const person1 = new Person(&quot;Harsh&quot;, 20);
+const person2 = new Person(&quot;Aman&quot;, 25);
+
+// Test the objects
+person1.greet(); // Output: Hi, I’m Harsh and I’m 20 years old!
+person2.greet(); // Output: Hi, I’m Aman and I’m 25 years old!
+</code></pre><ul id="17bbbc04-6741-80e5-b036-e2c0c2f63a86" class="bulleted-list"><li style="list-style-type:disc">event listener mein this ki value= element jis pe event listener laga hua ho </li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80fa-b7e7-ee25a82421d5" class="code"><code class="language-JavaScript">document.querySelector(&quot;button&quot;)
+.addEventListener(&quot;click&quot;,function(){
+	console.log(this);
+	}
+)
+//html code bellow
+&lt;button&gt;Click Me&lt;/button&gt;</code></pre><hr id="182bbc04-6741-8068-9be6-ca2a2b37b43c"/><h1 id="182bbc04-6741-8048-b118-f4fef1210f4f" class=""><mark class="highlight-red">Call,apply,bind</mark></h1><h2 id="182bbc04-6741-805d-a9fb-e56a84d4c73a" class=""><mark class="highlight-yellow">call</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80eb-8aa1-c32a10f5ce4f" class="code"><code class="language-JavaScript">const obj = {name:&quot;harsh&quot;}
+function abcd(){
+	console.log(this);
+}
+abcd.call() //value of this is window
+
+
+const obj = {name:&quot;harsh&quot;}
+function abcd(){
+	console.log(this);
+}
+abcd.call(obj); //value of this is object
+//output= { name: &quot;harsh&quot; }
+
+
+const obj = {name:&quot;harsh&quot;}
+function abcd(){
+	console.log(this);
+}
+abcd.call(12); //value of this is 12
+//output= [Number: 12]</code></pre><h2 id="182bbc04-6741-8044-bcce-fac6c2b49943" class=""><mark class="highlight-yellow">Apply</mark></h2><p id="182bbc04-6741-80de-888a-da67a5d24013" class="">unlike call, apply take an array</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-805c-9d01-e0a52e39ba21" class="code"><code class="language-JavaScript">const person = { name: &quot;Harsh&quot; };
+
+function greet(greeting, timeOfDay) {
+    console.log(`${greeting}, ${this.name}! Good ${timeOfDay}.`);
+}
+
+greet.apply(person, [&quot;Hello&quot;, &quot;morning&quot;]);
+//output= Hello, Harsh! Good morning.
+
+const numbers = [3, 7, 2, 8];
+const maxNumber = Math.max.apply(null, numbers);
+console.log(`The largest number is: ${maxNumber}`);
+//output = The largest number is: 8
+</code></pre><p id="182bbc04-6741-803d-83fd-f7596e54f4e3" class="">bind is same as call but it doesnot give the output immidiately, you have to call it</p><p id="182bbc04-6741-80ac-add2-fec5a8eebd96" class="">
+</p><h2 id="182bbc04-6741-80c5-a7a0-ee98d884f01c" class=""><mark class="highlight-red">Constructor Function with Prototype</mark></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80fe-87c1-ccab556a708a" class="code"><code class="language-JavaScript">function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.greet = function () {
+    console.log(`Hi, I’m ${this.name}, and I’m ${this.age} years old!`);
+};
+
+const person1 = new Person(&quot;Harsh&quot;, 20);
+const person2 = new Person(&quot;Aman&quot;, 25);
+
+person1.greet(); // Output: Hi, I’m Harsh, and I’m 20 years old!
+person2.greet(); // Output: Hi, I’m Aman, and I’m 25 years old!
+</code></pre><h3 id="182bbc04-6741-8036-be1a-f11932fff896" class=""><strong>Why Use Prototypes?</strong></h3><ul id="182bbc04-6741-807e-a30b-f53b1ca00299" class="bulleted-list"><li style="list-style-type:disc"><strong>Saves Memory</strong>:<p id="182bbc04-6741-80aa-ab40-d455b0d26f27" class="">Shared methods are stored in one place (the prototype), not copied to every object.</p></li></ul><ul id="182bbc04-6741-803c-8233-daad5851ee32" class="bulleted-list"><li style="list-style-type:disc"><strong>Easy to Share Behavior</strong>:<p id="182bbc04-6741-809f-8836-fb898bd2f1e9" class="">You can add new methods to the prototype, and all objects automatically get access.</p></li></ul><h3 id="182bbc04-6741-8012-9863-db0ca2801fc7" class=""><strong>Example 3: Overriding Behavior</strong></h3><p id="182bbc04-6741-80c9-8d99-c26317dc5729" class="">You can give an object its own version of a method, which overrides the one in the prototype.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80ba-9273-f053d49692b4" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">person1.greet = function () {
+    console.log(`Hey, I’m ${this.name}, and this is my custom greeting!`);
+};
+
+person1.greet(); // Output: Hey, I’m Harsh, and this is my custom greeting!
+person2.greet(); // Output: Hi, I’m Aman and I’m 25 years old!</code></pre><hr id="182bbc04-6741-805f-ac76-e6681c9d51c0"/><h2 id="182bbc04-6741-80d8-bc47-fa4b33cc740b" class=""><mark class="highlight-red">closures</mark></h2><ul id="182bbc04-6741-80a5-a002-e01236c6f030" class="bulleted-list"><li style="list-style-type:disc">ek function return krta hai dusra function</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8072-8dde-ec855a840bf1" class="code"><code class="language-JavaScript">function createCounter() {
+    let count = 0; // A variable that stays private
+
+    return function () {
+        count++; // Update the count
+        console.log(`Current count: ${count}`);
+    };
+}
+
+const counter = createCounter(); // Create a counter
+counter(); // Output: Current count: 1
+counter(); // Output: Current count: 2
+counter(); // Output: Current count: 3</code></pre><h3 id="182bbc04-6741-801a-a64b-d004493482e4" class=""><strong>Why Are Closures Useful?</strong></h3><ol type="1" id="182bbc04-6741-80b2-b899-f81aaf1a3912" class="numbered-list" start="1"><li><strong>Private Variables</strong>:<p id="182bbc04-6741-8088-b096-ee6329385173" class="">Closures let you keep data safe from outside tampering.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8064-bd9d-f500cb9dafbc" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function secretVault(password) {
+    return function (guess) {
+        if (guess === password) {
+            console.log(&quot;Access granted!&quot;);
+        } else {
+            console.log(&quot;Access denied!&quot;);
+        }
+    };
+}
+
+const vault = secretVault(&quot;mypassword&quot;);
+vault(&quot;wrongpassword&quot;); // Output: Access denied!
+vault(&quot;mypassword&quot;);    // Output: Access granted!</code></pre></li></ol><ol type="1" id="182bbc04-6741-8096-8883-c9078b8b666c" class="numbered-list" start="2"><li><strong>Factory Functions</strong>:<p id="182bbc04-6741-8087-86f1-eeb91afe853a" class="">Create multiple functions with their own private data.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-804d-adbd-c3918f9319ca" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function multiplier(factor) {
+    return function (number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(5)); // Output: 10
+console.log(triple(5)); // Output: 15</code></pre></li></ol><p id="182bbc04-6741-8006-82d2-da6cc70b3336" class=""><strong>Closures in JavaScript</strong></p><p id="182bbc04-6741-800f-812a-fe221aec073d" class="">A <strong>closure</strong> is when a function “remembers” the variables in the place where it was created, even if it’s used somewhere else. It’s like the function carries a secret backpack 🎒 full of the variables it might need.</p><hr id="182bbc04-6741-8052-9bbf-c0176c6a7a27"/><h3 id="182bbc04-6741-803d-8776-d1e42e58b431" class=""><strong>The Basic Idea</strong></h3><p id="182bbc04-6741-80ea-af8e-e8418c86c46e" class="">A function inside another function can access:</p><ol type="1" id="182bbc04-6741-80ba-8db3-e219ad420bd0" class="numbered-list" start="1"><li><strong>Its own variables.</strong></li></ol><ol type="1" id="182bbc04-6741-800c-bc4a-fc145bafc2ef" class="numbered-list" start="2"><li><strong>The variables of the function where it was created (the outer function).</strong></li></ol><ol type="1" id="182bbc04-6741-800f-bd1f-e7169695d4b6" class="numbered-list" start="3"><li><strong>Global variables.</strong></li></ol><hr id="182bbc04-6741-8012-bfb0-f874bfa36d31"/><h3 id="182bbc04-6741-80ae-9b67-f8b756fdaf71" class=""><strong>Example of a Closure</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8055-b8ec-f3a63ac9dee6" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function outerFunction() {
+    let secret = &quot;I’m a secret!&quot;; // Variable in the outer function
+
+    function innerFunction() {
+        console.log(secret); // Inner function uses the outer variable
+    }
+
+    return innerFunction;
+}
+
+const myClosure = outerFunction(); // outerFunction runs and returns innerFunction
+myClosure(); // Output: I’m a secret!
+</code></pre><p id="182bbc04-6741-803c-a823-f7b927745258" class=""><strong>What’s Happening?</strong></p><ol type="1" id="182bbc04-6741-80e3-986b-f76330c38588" class="numbered-list" start="1"><li><code><strong>outerFunction</strong></code><strong> runs:</strong> It creates the <code>secret</code> variable and the <code>innerFunction</code>.</li></ol><ol type="1" id="182bbc04-6741-801b-8009-f10c686e1acb" class="numbered-list" start="2"><li><code><strong>innerFunction</strong></code><strong> is returned:</strong> Even though <code>outerFunction</code> is done, <code>innerFunction</code> keeps access to <code>secret</code>.</li></ol><ol type="1" id="182bbc04-6741-8002-a8f1-ff067e4ab43a" class="numbered-list" start="3"><li><strong>Closure magic happens:</strong> <code>myClosure</code> (the returned <code>innerFunction</code>) remembers the <code>secret</code> variable because of the closure.</li></ol><hr id="182bbc04-6741-80c0-a7d2-f859061fe3ce"/><h3 id="182bbc04-6741-8045-94f2-c8307e09a213" class=""><strong>Why Are Closures Useful?</strong></h3><h3 id="182bbc04-6741-8004-bdb4-c1903c390693" class="">1. <strong>Private Variables</strong></h3><p id="182bbc04-6741-8067-a2b5-ead8b4bd6d74" class="">Closures let you keep data safe from the outside world.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-804c-b7aa-f5041053318e" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function createSecret(secret) {
+    return function () {
+        console.log(`The secret is: ${secret}`);
+    };
+}
+
+const mySecret = createSecret(&quot;I love chocolate!&quot;);
+mySecret(); // Output: The secret is: I love chocolate!
+</code></pre><p id="182bbc04-6741-8051-853f-ff35b65044a6" class="">The <code>secret</code> variable is only accessible inside the closure. It’s private!</p><hr id="182bbc04-6741-80fc-a31b-c951e5670965"/><h3 id="182bbc04-6741-8059-836d-c9b8bf44eafb" class="">2. <strong>Building Custom Functions</strong></h3><p id="182bbc04-6741-8020-9440-d3803bee538d" class="">You can use closures to create functions with their own “settings.”</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8049-9743-f5acebdf39af" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function multiplier(factor) {
+    return function (number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2); // Function to multiply by 2
+const triple = multiplier(3); // Function to multiply by 3
+
+console.log(double(5)); // Output: 10
+console.log(triple(5)); // Output: 15
+</code></pre><p id="182bbc04-6741-800e-8d93-c2058902d50a" class="">Each returned function remembers its own <code>factor</code>.</p><hr id="182bbc04-6741-805f-a9bb-fe1354c62fe9"/><h3 id="182bbc04-6741-80df-a7ac-fc83d50d4e6d" class="">3. <strong>Making Counters</strong></h3><p id="182bbc04-6741-80ea-b846-e65e37f75d5d" class="">Closures let you keep track of things, like a counter.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8070-8224-f23ec8b35623" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function createCounter() {
+    let count = 0;
+
+    return function () {
+        count++;
+        console.log(`Current count: ${count}`);
+    };
+}
+
+const counter = createCounter();
+counter(); // Output: Current count: 1
+counter(); // Output: Current count: 2
+counter(); // Output: Current count: 3
+</code></pre><p id="182bbc04-6741-805e-afd6-f4adc675544f" class="">The <code>count</code> variable is private but still remembered by the returned function.</p><hr id="182bbc04-6741-80bb-9b80-dec7e5a89dcf"/><h3 id="182bbc04-6741-800d-b674-db7e543c0326" class=""><strong>Summary</strong></h3><ul id="182bbc04-6741-809c-abf2-c331e9307e41" class="bulleted-list"><li style="list-style-type:disc"><strong>Closure = Function + Backpack 🎒</strong></li></ul><ul id="182bbc04-6741-807c-b458-c1deda41a7ee" class="bulleted-list"><li style="list-style-type:disc">A closure is a function that carries the variables it needs from its original environment.</li></ul><p id="182bbc04-6741-80e8-bb43-da61f441bc80" class=""><strong>Uses of Closures:</strong></p><ol type="1" id="182bbc04-6741-8043-90a1-d1a9d65b1fb5" class="numbered-list" start="1"><li>Keep variables private.</li></ol><ol type="1" id="182bbc04-6741-8031-a4a8-d4628f92c92d" class="numbered-list" start="2"><li>Create custom functions.</li></ol><ol type="1" id="182bbc04-6741-806a-9580-d7a4d32c9d93" class="numbered-list" start="3"><li>Track data (like counters).</li></ol><hr id="182bbc04-6741-8012-baf0-ef0725c120dc"/><h2 id="182bbc04-6741-804b-95e3-cf0641b30f52" class="">Event Delegation</h2><p id="182bbc04-6741-8052-b721-ee12ed7f5d5a" class="">
+</p><p id="182bbc04-6741-80ef-9dfb-fd6e3a4f537d" class=""><strong>Event delegation</strong> ek technique hai jisme hum:</p><ol type="1" id="182bbc04-6741-80c2-8f8f-da84b116db0f" class="numbered-list" start="1"><li>Ek <strong>single event listener</strong> parent element pe lagate hain.</li></ol><ol type="1" id="182bbc04-6741-80c2-bbfb-c219ca3fea92" class="numbered-list" start="2"><li>Aur usse child elements ke events handle karte hain (including future dynamically added elements).</li></ol><hr id="182bbc04-6741-8013-bc0a-f86255fb5213"/><h3 id="182bbc04-6741-8060-bb65-ea4bf954f44c" class=""><strong>Logic kaise kaam karta hai?</strong></h3><p id="182bbc04-6741-8043-bd44-c17c7cc8f518" class="">Iska base hai <strong>event bubbling</strong>, jisme event sabse pehle target element pe trigger hota hai aur phir parent elements tak &quot;bubble up&quot; karta hai.</p><hr id="182bbc04-6741-80b3-ae19-ccee79e7a1a9"/><h3 id="182bbc04-6741-8054-9f35-e2198bdcad21" class=""><strong>Kyu use karte hain Event Delegation?</strong></h3><ol type="1" id="182bbc04-6741-8095-bea7-d5840ec477c6" class="numbered-list" start="1"><li><strong>Efficient hota hai</strong>:<p id="182bbc04-6741-8035-8926-c78ad44ce378" class="">Har child pe alag-alag listener lagane ki zarurat nahi, ek hi parent pe kaafi hai.</p></li></ol><ol type="1" id="182bbc04-6741-80d4-bf6e-e74f16f71ae4" class="numbered-list" start="2"><li><strong>Dynamic elements ke liye perfect hai</strong>:<p id="182bbc04-6741-80e8-a163-d34a30ef0aa8" class="">Agar future mein naye elements add hue, toh unka event bhi automatically handle ho jayega.</p></li></ol><hr id="182bbc04-6741-808c-b53d-f982c21d08fe"/><h3 id="182bbc04-6741-8077-9122-c0afcab108de" class=""><strong>Example Without Event Delegation</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80d9-a9ef-cb4d1d248473" class="code"><code class="language-HTML" style="white-space:pre-wrap;word-break:break-all">&lt;div id=&quot;parent&quot;&gt;
+    &lt;button&gt;Button 1&lt;/button&gt;
+    &lt;button&gt;Button 2&lt;/button&gt;
+    &lt;button&gt;Button 3&lt;/button&gt;
+&lt;/div&gt;</code></pre><p id="182bbc04-6741-80f1-a05d-f76a9bd7f6c9" class="">Agar har button ke liye alag listener lagate ho:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8061-9895-d6699129336e" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const buttons = document.querySelectorAll(&quot;button&quot;);
+buttons.forEach((button) =&gt; {
+    button.addEventListener(&quot;click&quot;, () =&gt; {
+        console.log(&quot;Button clicked!&quot;);
+    });
+});</code></pre><p id="182bbc04-6741-80b4-980d-fe6e3437558c" class=""><strong>Problem</strong>:</p><ul id="182bbc04-6741-8083-8d5d-d991417a9ce4" class="bulleted-list"><li style="list-style-type:disc">Har button ke liye ek alag listener lag raha hai.</li></ul><ul id="182bbc04-6741-809d-b111-f1cd0e885315" class="bulleted-list"><li style="list-style-type:disc">Dynamic buttons (jo baad mein add hote hain) kaam nahi karenge.</li></ul><hr id="182bbc04-6741-804e-b2f9-c4e8b2ed4b22"/><h3 id="182bbc04-6741-8030-8359-fc0ec85b37fe" class=""><strong>Event Delegation Ka Solution</strong></h3><p id="182bbc04-6741-8092-984a-dfc4ad179d80" class="">Ab ek hi parent pe listener lagate hain:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80a4-85dc-e120319e697d" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const parent = document.getElementById(&quot;parent&quot;);
+
+parent.addEventListener(&quot;click&quot;, (event) =&gt; {
+    if (event.target.tagName === &quot;BUTTON&quot;) {
+        console.log(&quot;Button clicked!&quot;);
+    }
+});</code></pre><hr id="182bbc04-6741-8047-8be7-ce71ae978724"/><h3 id="182bbc04-6741-80b3-8991-d9742c21923a" class=""><strong>Kaise Kaam Karta Hai?</strong></h3><ol type="1" id="182bbc04-6741-8024-a3de-dd079af5bce0" class="numbered-list" start="1"><li>Listener sirf parent pe hai.</li></ol><ol type="1" id="182bbc04-6741-8003-acb5-d285279110a3" class="numbered-list" start="2"><li>Jab button click hota hai, event bubble hoke parent tak aata hai.</li></ol><ol type="1" id="182bbc04-6741-8015-bd71-d46d168e081f" class="numbered-list" start="3"><li><code>event.target</code> se pata chalta hai ki kaunsa element click hua.</li></ol><ol type="1" id="182bbc04-6741-80b7-991a-ff8a37afa629" class="numbered-list" start="4"><li>Condition lagate hain ki agar <code>event.target</code> button hai, toh kaam karo.</li></ol><hr id="182bbc04-6741-804a-9ce4-cb8216f2b7f4"/><h3 id="182bbc04-6741-80cb-8ea2-f668b12f5287" class=""><strong>Advantages</strong></h3><ol type="1" id="182bbc04-6741-8034-808b-c5f29950b013" class="numbered-list" start="1"><li><strong>Kam Listeners</strong>:<p id="182bbc04-6741-80e1-9fd2-e63f06e635a9" class="">Har child element pe listener lagane ki zarurat nahi.</p></li></ol><ol type="1" id="182bbc04-6741-80b3-9c59-e3e86ab21528" class="numbered-list" start="2"><li><strong>Dynamic Elements ka Support</strong>:<p id="182bbc04-6741-8046-98c1-ecc6c9567401" class="">Agar naye buttons add karte ho, toh bhi woh automatically kaam karenge:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8096-82ab-f34a9ca1dfd6" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">javascript
+CopyEdit
+const newButton = document.createElement(&quot;button&quot;);
+newButton.textContent = &quot;New Button&quot;;
+parent.appendChild(newButton); // Listener pehle se hi kaam karega!
+
+</code></pre></li></ol><hr id="182bbc04-6741-8008-bf3c-e76471798023"/><h3 id="182bbc04-6741-80af-baa3-fc3d87f8606b" class=""><strong>Ek Real-Life Example</strong></h3><p id="182bbc04-6741-804e-96a7-fbc9fa1e9508" class="">Socho ek teacher hai jo class me bolta hai:</p><p id="182bbc04-6741-802b-ae9f-dbb17169f7c7" class="">&quot;Jo bhi question hai, haath uthaake bolo.&quot;</p><p id="182bbc04-6741-803b-b5ea-e8ae710ca39c" class="">Teacher (parent) bas haath uthane wale students (events) ko sunta hai, har ek student ko individually check nahi karta.</p><hr id="182bbc04-6741-8063-915c-d9e1cfb45bec"/><h2 id="182bbc04-6741-8045-a139-c350e1f7b555" class="">HOFs</h2><h3 id="182bbc04-6741-804c-841f-c45618b01b83" class=""><strong>What are Higher-Order Functions?</strong></h3><p id="182bbc04-6741-8033-85fa-f3315c069d79" class="">Ek <strong>Higher-Order Function (HOF)</strong> wo function hota hai jo:</p><ol type="1" id="182bbc04-6741-80a6-8fa0-e8e2d201fb38" class="numbered-list" start="1"><li><strong>Ek function ko argument</strong> ke tarah accept karta hai, ya</li></ol><ol type="1" id="182bbc04-6741-8060-bad4-c7d87fe03d53" class="numbered-list" start="2"><li><strong>Ek function ko return</strong> karta hai.</li></ol><p id="182bbc04-6741-802b-9463-d78781f74855" class="">Bas itna yaad rakho ki agar function ke andar koi aur function kaam kar raha hai, toh wo HOF hai.</p><hr id="182bbc04-6741-8018-a86c-d52fb7340ef9"/><h3 id="182bbc04-6741-801d-9895-dcf2c5381694" class=""><strong>Why are HOFs Useful?</strong></h3><ul id="182bbc04-6741-806b-aa3b-dfa3fcf875e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Reusable Code</strong>: Bar-bar repeat hone wale kaam ke liye ek generic function bana sakte ho.</li></ul><ul id="182bbc04-6741-8062-a44a-fe506e9f50b2" class="bulleted-list"><li style="list-style-type:disc"><strong>Functional Programming</strong> ke concepts implement karte ho.</li></ul><hr id="182bbc04-6741-8057-9ac2-c063e259c19c"/><h3 id="182bbc04-6741-8021-a837-d62be221da27" class=""><strong>Example 1: HOF jo Function ko Accept Karta Hai</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8034-b42c-f81036b9c738" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function greet(name, callback) {
+    console.log(&quot;Hi &quot; + name);
+    callback();
+}
+
+function sayBye() {
+    console.log(&quot;Bye!&quot;);
+}
+
+greet(&quot;Harsh&quot;, sayBye)</code></pre><hr id="182bbc04-6741-800b-8a02-f418bc30691b"/><h3 id="182bbc04-6741-8053-86df-c7769b72375e" class=""><strong>Explanation</strong>:</h3><ol type="1" id="182bbc04-6741-8095-8f06-fd4ec5d79d6f" class="numbered-list" start="1"><li><code>greet</code> ek <strong>HOF</strong> hai kyunki wo ek function (<code>callback</code>) ko argument ke tarah accept kar raha hai.</li></ol><ol type="1" id="182bbc04-6741-80a0-84b9-d763a5f66f62" class="numbered-list" start="2"><li><code>greet</code> pehle name ko greet karta hai aur phir <code>callback</code> function (<code>sayBye</code>) ko call karta hai.</li></ol><hr id="182bbc04-6741-8065-856d-f05ef670e4ea"/><h3 id="182bbc04-6741-80ec-a5d7-e4a5bc06d806" class=""><strong>Example 2: HOF jo Function Return Karta Hai</strong></h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8045-bcbf-ecc9036752aa" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function multiplier(factor) {
+    return function (number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2);
+console.log(double(5)); // Output: 10</code></pre><h3 id="182bbc04-6741-8088-a5ec-c1f4b10d359c" class=""><strong>Explanation</strong>:</h3><ol type="1" id="182bbc04-6741-801f-87f5-c50f24c4879c" class="numbered-list" start="1"><li><code>multiplier</code> ek <strong>HOF</strong> hai kyunki wo ek function return kar raha hai.</li></ol><ol type="1" id="182bbc04-6741-8044-a897-cbc1af69fe38" class="numbered-list" start="2"><li><code>double</code> ab ek specific function hai jo kisi number ko 2 se multiply karega.</li></ol><hr id="182bbc04-6741-803a-a46c-e4b970dc4d7c"/><h3 id="182bbc04-6741-80ef-aab8-dcbe701eab04" class=""><strong>Common HOFs in JavaScript</strong></h3><p id="182bbc04-6741-8038-9b4e-cb5ee4c04d74" class="">JavaScript mein kuch built-in HOFs hain jo bohot common aur powerful hain. Let’s see unka use.</p><hr id="182bbc04-6741-80b2-8bba-c5e5562659d5"/><h3 id="182bbc04-6741-8013-abf2-cabc87e22e9f" class=""><strong>1. </strong><code><strong>forEach</strong></code></h3><p id="182bbc04-6741-80b6-b3ed-f5ccca34b356" class="">Har array element pe kaam karne ke liye.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-801b-be26-eb02c84936fc" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const arr = [1, 2, 3];
+arr.forEach((num) =&gt; console.log(num * 2));</code></pre><p id="182bbc04-6741-80d1-be2b-d97fcdb3bfb7" class=""><strong>Output</strong>:</p><p id="182bbc04-6741-8024-8424-e9d299c5f016" class="">2</p><p id="182bbc04-6741-8020-80c6-de044b935282" class="">4</p><p id="182bbc04-6741-807f-98ba-dc4979b6b616" class="">6</p><hr id="182bbc04-6741-80ac-b807-e21c1a4a4661"/><h3 id="182bbc04-6741-80af-ae2c-d43e06cb4a8a" class=""><strong>2. </strong><code><strong>map</strong></code></h3><p id="182bbc04-6741-8072-a85a-ecc03787d98d" class="">Naye array banane ke liye.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80f3-9466-ea18c089eabe" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const arr = [1, 2, 3];
+const squares = arr.map((num) =&gt; num * num);
+console.log(squares); // Output: [1, 4, </code></pre><hr id="182bbc04-6741-80f4-974f-d3bd2e9280c2"/><h3 id="182bbc04-6741-8025-b086-d39475959fa1" class=""><strong>3. </strong><code><strong>filter</strong></code></h3><p id="182bbc04-6741-8062-8f61-c72ec41c1763" class="">Array ke specific elements ko filter karne ke liye.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-807d-8e71-f1c62258f02c" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const arr = [10, 15, 20, 25];
+const filtered = arr.filter((num) =&gt; num &gt; 15);
+console.log(filtered); // Output: [20, 25]</code></pre><hr id="182bbc04-6741-8060-820f-cb6236c5834a"/><h3 id="182bbc04-6741-80de-8e9d-c127b374e82c" class=""><strong>4. </strong><code><strong>reduce</strong></code></h3><p id="182bbc04-6741-80c8-ab39-e8b17646f5d0" class="">Array ko reduce karke ek single value banane ke liye.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80b6-a083-e1a408f53f17" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const arr = [1, 2, 3, 4];
+const sum = arr.reduce((acc, num) =&gt; acc + num, 0);
+console.log(sum); // Output: 10</code></pre><hr id="182bbc04-6741-801f-a07a-eb20af8b5a2b"/><h3 id="182bbc04-6741-80cb-b7ce-f630a673b0c6" class=""><strong>Real-Life Analogy</strong></h3><p id="182bbc04-6741-80e6-9072-e6bbcc182f7a" class="">Socho ek chef hai jo ek universal recipe follow karta hai:</p><ol type="1" id="182bbc04-6741-802f-928a-f4551e5e18dd" class="numbered-list" start="1"><li>Tum ek ingredient list dete ho (function as input).</li></ol><ol type="1" id="182bbc04-6741-8075-b40d-c9a4e40cbe4a" class="numbered-list" start="2"><li>Chef tumhare hisaab se dish ready karta hai (function output deta hai).</li></ol><p id="182bbc04-6741-80d4-9a0e-da1ef02d3889" class="">Chef ka recipe-making logic ek <strong>HOF</strong> ki tarah kaam kar raha hai.</p><hr id="182bbc04-6741-8077-90b0-ebc1e8ca9cb5"/><h3 id="182bbc04-6741-804f-b327-fafc81d159c9" class=""><strong>Key Points to Remember</strong></h3><ul id="182bbc04-6741-8056-a1e5-e4c431aaa458" class="bulleted-list"><li style="list-style-type:disc">HOFs are functions that <strong>accept</strong> or <strong>return</strong> other functions.</li></ul><ul id="182bbc04-6741-8045-b58f-c2305bf16237" class="bulleted-list"><li style="list-style-type:disc">They help you write <strong>short, clean, and reusable code</strong>.</li></ul><ul id="182bbc04-6741-8026-8f3d-d0483999e37d" class="bulleted-list"><li style="list-style-type:disc">JS ke built-in HOFs like <code>map</code>, <code>filter</code>, <code>reduce</code> bohot kaam ke hain.</li></ul><hr id="182bbc04-6741-80fe-ba73-e34feecf7f67"/><h2 id="182bbc04-6741-805a-9019-d2bed872eab6" class="">Error handling</h2><p id="182bbc04-6741-802a-bb31-efc7f262286b" class=""><strong>Error Handling in JavaScript</strong></p><p id="182bbc04-6741-802c-b1d8-eef82a9e45c0" class=""><strong>Code likhte waqt kabhi-kabhi errors aajate hain (syntax error, runtime error, etc.). Agar in errors ko handle nahi kiya, toh poora code crash kar sakta hai.</strong></p><p id="182bbc04-6741-8041-a3ee-ec8c2d91b106" class=""><strong>Error handling ka main purpose hai:</strong></p><ol type="1" id="182bbc04-6741-803f-bd66-e6e5c61932ed" class="numbered-list" start="1"><li>Errors ka pata lagana (detect).</li></ol><ol type="1" id="182bbc04-6741-8051-8faa-ff57190ae00c" class="numbered-list" start="2"><li>Unhe theek se manage karna (handle) taaki code crash na ho.</li></ol><hr id="182bbc04-6741-80a8-abc1-cbb843f3d392"/><p id="182bbc04-6741-805a-b3a0-fe13857ed810" class=""><strong>Try-Catch Block</strong><br/>JavaScript mein, errors ko handle karne ke liye hum try-catch ka use karte hain.<br/>Iska structure kuch aisa hota hai:<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8062-abe0-fba1899e6b24" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">try {
+    // Risky code jo error throw kar sakta hai
+} catch (error) {
+    // Agar error aata hai toh yeh block execute hoga
+}
+</code></pre><hr id="182bbc04-6741-8084-85f6-cc25732aae7b"/><p id="182bbc04-6741-80cb-ad06-f6b9cf5d92b1" class=""><strong>Basic Example</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-80ec-a691-d247014173f8" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">try {
+    let result = 10 / 0; // Risky code
+    console.log(result); // This runs fine
+    console.log(a); // Error: &#x27;a&#x27; is not defined
+} catch (error) {
+    console.log(&quot;An error occurred:&quot;, error.message);
+}
+</code></pre><p id="182bbc04-6741-80a6-8dc2-eda2626f42b6" class=""><strong>Explanation:</strong></p><ul id="182bbc04-6741-80a1-9be1-f93abdce7074" class="bulleted-list"><li style="list-style-type:disc"><strong>Try block:</strong> Yaha wo code likhte ho jo error throw kar sakta hai.</li></ul><ul id="182bbc04-6741-80e4-9e15-d45f0a419e51" class="bulleted-list"><li style="list-style-type:disc"><strong>Catch block:</strong> Agar try block mein koi error aata hai, toh catch block execute hota hai.</li></ul><ul id="182bbc04-6741-80cf-a35f-fc8b450dc398" class="bulleted-list"><li style="list-style-type:disc"><strong>error.message:</strong> Error ka specific message batata hai.</li></ul><p id="182bbc04-6741-80be-8340-ea4387e17d96" class="">Code crash nahi karta, error handle ho jata hai.</p><hr id="182bbc04-6741-80a0-ab1f-fe7170bdd99f"/><p id="182bbc04-6741-802d-ad5a-fb1f5132474d" class=""><strong>Finally Block</strong><br/>Agar tumhe koi code try-catch ke baad bhi hamesha execute karna ho, toh finally use karte hain.<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8061-9c73-d0e10ce0fed2" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">try {
+    let result = 5 / 1;
+    console.log(result);
+} catch (error) {
+    console.log(&quot;An error occurred:&quot;, error.message);
+} finally {
+    console.log(&quot;This runs no matter what.&quot;);
+}
+</code></pre><p id="182bbc04-6741-804b-a89d-f80980582632" class=""><strong>Output:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8043-b503-ecfd3ed9e64f" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">5
+This runs no matter what.
+</code></pre><hr id="182bbc04-6741-800a-bbd1-c90a87555271"/><p id="182bbc04-6741-80c3-a36e-e73d4f20a2ad" class=""><strong>Throwing Your Own Errors</strong><br/>Kabhi-kabhi tumhe khud error throw karni padti hai (e.g., input validation).<br/></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="182bbc04-6741-8005-94a3-f82d3594178d" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">function divide(a, b) {
+    if (b === 0) {
+        throw new Error(&quot;Cannot divide by zero!&quot;); // Custom error
+    }
+    return a / b;
+}
+
+try {
+    console.log(divide(10, 0));
+} catch (error) {
+    console.log(&quot;Error:&quot;, error.message);
+}
+</code></pre><hr id="182bbc04-6741-8002-af87-f6091b6c5bab"/><p id="182bbc04-6741-80e2-885f-e94bd5bea3ba" class=""><strong>Real-Life Analogy</strong><br/>Imagine ek ATM hai. Agar tum wrong PIN enter karte ho:<br/></p><ul id="182bbc04-6741-8079-9de1-d9f69586a96c" class="bulleted-list"><li style="list-style-type:disc">ATM tumhe error message (catch block) deta hai: &quot;Wrong PIN entered.&quot;</li></ul><ul id="182bbc04-6741-80ff-be1f-e650074f9463" class="bulleted-list"><li style="list-style-type:disc">Lekin ATM shutdown nahi karta, baaki cheezein theek kaam karti rehti hain.</li></ul><p id="182bbc04-6741-800f-a732-d9d201133f4b" class="">Similarly, try-catch se tumhara code rukta nahi hai, error handle ho jata hai.</p><hr id="182bbc04-6741-80bb-9581-ff9979f7b830"/><p id="182bbc04-6741-80dc-95fa-d505f3c581db" class=""><strong>When to Use Try-Catch?</strong></p><ol type="1" id="182bbc04-6741-80d0-9aa9-decb18d0a195" class="numbered-list" start="1"><li><strong>API Calls:</strong> Jab tum external APIs se data fetch karte ho.</li></ol><ol type="1" id="182bbc04-6741-8090-8eb6-de7680caa6df" class="numbered-list" start="2"><li><strong>File Operations:</strong> Jab tum file read/write karte ho.</li></ol><ol type="1" id="182bbc04-6741-8027-b00b-fe3db16fa145" class="numbered-list" start="3"><li><strong>Validation:</strong> Kabhi input ya calculation galat ho sakti hai.</li></ol><ol type="1" id="182bbc04-6741-8062-9059-d71445d275ef" class="numbered-list" start="4"><li><strong>Complex Logic:</strong> Jahaan code fail hone ke chances zyada hain.</li></ol><hr id="182bbc04-6741-8024-8756-c705a2126643"/><p id="182bbc04-6741-808d-a7d5-d3b3cb6a8526" class=""><strong>Golden Rule</strong></p><ul id="182bbc04-6741-8077-9e4c-f297606a6679" class="bulleted-list"><li style="list-style-type:disc">Try-catch ka use tab karo jab error expected ho, har chhoti cheez ke liye mat lagao.</li></ul><ul id="182bbc04-6741-8099-8218-dac00f0cecf6" class="bulleted-list"><li style="list-style-type:disc">Agar error predictable hai, toh uska check (if-else) karna better hota hai.</li></ul><hr id="183bbc04-6741-8027-92db-c53af5afe137"/><h2 id="183bbc04-6741-8043-802a-d9d02d0d1aba" class="">Custom event</h2><p id="183bbc04-6741-80e7-8224-e40cc9695189" class=""><strong>Custom Events in JavaScript</strong></p><p id="183bbc04-6741-80e8-b2bd-e61a86eb5bc5" class=""><strong>What are Custom Events?</strong><br/>Jaise JavaScript mein predefined events hote hain (e.g., click, keydown), waise hi tum custom events create kar sakte ho. Custom events ka use tab hota hai jab tumhe apne specific app logic ke liye events banane aur unhe trigger karne ki zarurat ho.<br/></p><hr id="183bbc04-6741-80cb-beb6-e924eb36218b"/><p id="183bbc04-6741-8024-9212-de260ec67ab4" class=""><strong>Why Use Custom Events?</strong></p><ol type="1" id="183bbc04-6741-8002-8e1c-e9253a34be2e" class="numbered-list" start="1"><li><strong>Communication:</strong><ul id="183bbc04-6741-8056-83b7-f508eb27b220" class="bulleted-list"><li style="list-style-type:disc">Different parts of your app ek dusre se baat kar sakte hain.</li></ul></li></ol><ol type="1" id="183bbc04-6741-8044-b992-c7dd4f8785f7" class="numbered-list" start="2"><li><strong>Reusable Logic:</strong><ul id="183bbc04-6741-804a-a821-d0d180a175af" class="bulleted-list"><li style="list-style-type:disc">Ek baar custom event bana liya, toh kahi bhi use kar sakte ho.</li></ul></li></ol><ol type="1" id="183bbc04-6741-8092-9026-d7b845089bc7" class="numbered-list" start="3"><li><strong>Dynamic Functionality:</strong><ul id="183bbc04-6741-801d-8b39-d35169deab36" class="bulleted-list"><li style="list-style-type:disc">User actions ya background processes ke response mein kuch specific karna ho.</li></ul></li></ol><hr id="183bbc04-6741-80cf-aed0-f5d31480924b"/><p id="183bbc04-6741-80eb-82a1-f7be3bfc2ff6" class=""><strong>How to Create and Use Custom Events?</strong></p><p id="183bbc04-6741-80fd-9073-fc23d6457112" class=""><strong>1. Custom Event Create Karna</strong><br/>JavaScript mein <br/><code>CustomEvent</code> constructor ka use karke custom events bana sakte ho.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-8046-bba9-f8d074b3488a" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">const myEvent = new CustomEvent(&quot;greet&quot;, {
+    detail: { name: &quot;Harsh&quot;, message: &quot;Hello, world!&quot; }
+});
+</code></pre><ul id="183bbc04-6741-807c-85d4-fc4f299d9e57" class="bulleted-list"><li style="list-style-type:disc"><strong>&quot;greet&quot;</strong>: Event ka naam hai.</li></ul><ul id="183bbc04-6741-802c-af5d-cb962f05413a" class="bulleted-list"><li style="list-style-type:disc"><strong>detail</strong>: Ek object hai jo tumhare custom data ko carry karta hai.</li></ul><p id="183bbc04-6741-8004-9ec6-ec1444b8550b" class=""><strong>2. Event Listen Karna</strong><br/>Custom events ko listen karne ke liye hum <br/><code>addEventListener</code> ka use karte hain.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-8019-9ea9-fcc168b04e1d" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">document.addEventListener(&quot;greet&quot;, (event) =&gt; {
+    console.log(&quot;Custom Event Triggered!&quot;);
+    console.log(event.detail); // Output: { name: &quot;Harsh&quot;, message: &quot;Hello, world!&quot; }
+});
+</code></pre><p id="183bbc04-6741-802c-9633-c276ade1064e" class=""><strong>3. Event Trigger Karna</strong><br/>Custom events ko trigger karne ke liye hum <br/><code>dispatchEvent</code> ka use karte hain.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-805d-a8f4-fd2166ab0322" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">document.dispatchEvent(myEvent);
+</code></pre><p id="183bbc04-6741-8074-863f-e57c4e7dfa2b" class=""><strong>Output:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-80e4-b88d-e57e1e5ac3c8" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">Custom Event Triggered!
+{ name: &quot;Harsh&quot;, message: &quot;Hello, world!&quot; }
+</code></pre><hr id="183bbc04-6741-807c-8179-dca18d0e19ca"/><p id="183bbc04-6741-800e-a22c-f4597f745476" class=""><strong>Full Example:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-80a8-bfd7-c4584947ea0c" class="code"><code class="language-JavaScript" style="white-space:pre-wrap;word-break:break-all">// Custom Event Create karo
+const userLoginEvent = new CustomEvent(&quot;userLogin&quot;, {
+    detail: { username: &quot;harsh123&quot;, time: &quot;10:30 AM&quot; }
+});
+
+// Event Listener Add karo
+document.addEventListener(&quot;userLogin&quot;, (event) =&gt; {
+    console.log(&quot;User Logged In!&quot;);
+    console.log(&quot;Username:&quot;, event.detail.username);
+    console.log(&quot;Login Time:&quot;, event.detail.time);
+});
+
+// Event Trigger karo
+document.dispatchEvent(userLoginEvent);
+</code></pre><p id="183bbc04-6741-80c6-a516-ff6ece96bf01" class=""><strong>Output:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="183bbc04-6741-80bf-bc85-e787579132fb" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">User Logged In!
+Username: harsh123
+Login Time: 10:30 AM
+</code></pre><hr id="183bbc04-6741-80f3-b0a4-e09328849263"/><p id="183bbc04-6741-80b5-a1b6-cddc47738ff9" class=""><strong>Real-Life Analogy:</strong><br/>Imagine tumhare ghar pe ek party hai:<br/></p><ol type="1" id="183bbc04-6741-80f7-b7b2-d71e21fb9cf6" class="numbered-list" start="1"><li><strong>Custom Rule:</strong><ul id="183bbc04-6741-80b5-b40e-de432fd32ba4" class="bulleted-list"><li style="list-style-type:disc">&quot;Jab koi bell bajaye, toh welcome bolo.&quot;</li></ul></li></ol><ol type="1" id="183bbc04-6741-809a-91a2-e70b1f3b738f" class="numbered-list" start="2"><li><strong>Listener:</strong><ul id="183bbc04-6741-80f6-ac38-f0a375a7a920" class="bulleted-list"><li style="list-style-type:disc">Family members bell bajne ka wait kar rahe hain.</li></ul></li></ol><ol type="1" id="183bbc04-6741-80e1-9d08-f0729f28b063" class="numbered-list" start="3"><li><strong>Trigger:</strong><ul id="183bbc04-6741-8000-a2b7-eaa3e0c0ae4b" class="bulleted-list"><li style="list-style-type:disc">Guest bell bajata hai (event trigger karta hai).</li></ul></li></ol><ol type="1" id="183bbc04-6741-809b-a1a2-fa92af44b216" class="numbered-list" start="4"><li><strong>Result:</strong><ul id="183bbc04-6741-80f0-950a-fe20180060b8" class="bulleted-list"><li style="list-style-type:disc">Sab milke &quot;Welcome!&quot; bolte hain. 😄</li></ul></li></ol><hr id="183bbc04-6741-80d3-9e17-f37adb7a4e05"/><p id="183bbc04-6741-8044-bafb-d1deeeeafc55" class=""><strong>Where Are Custom Events Used?</strong></p><ol type="1" id="183bbc04-6741-80a3-bdc6-fe7048b63a6e" class="numbered-list" start="1"><li><strong>Web Components:</strong><ul id="183bbc04-6741-8029-a03a-f66d6c325618" class="bulleted-list"><li style="list-style-type:disc">Reusable components ke beech communication ke liye.</li></ul></li></ol><ol type="1" id="183bbc04-6741-80f6-a6d7-e0ab9d02525a" class="numbered-list" start="2"><li><strong>Real-Time Updates:</strong><ul id="183bbc04-6741-80df-8f82-c6eeb711a5d4" class="bulleted-list"><li style="list-style-type:disc">E.g., live chat apps mein user typing status dikhana.</li></ul></li></ol><ol type="1" id="183bbc04-6741-80dc-8ed1-ce8fae180de4" class="numbered-list" start="3"><li><strong>Games:</strong><ul id="183bbc04-6741-80d9-9cd0-f1c3db14cdce" class="bulleted-list"><li style="list-style-type:disc">Score updates ya level completion ke liye.</li></ul></li></ol><ol type="1" id="183bbc04-6741-80cd-a7e7-f9db71b02121" class="numbered-list" start="4"><li><strong>Custom Libraries:</strong><ul id="183bbc04-6741-806d-ae02-e17ae45569d2" class="bulleted-list"><li style="list-style-type:disc">Apne framework ya library mein events implement karne ke liye.</li></ul></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
